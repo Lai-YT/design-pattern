@@ -1,6 +1,9 @@
 #include "client.hpp"
 #include "drink.hpp"
 
+// having various kinds of drinks, sugar types, ice types, ... ,
+// can get combinations from the client, make 1 + 1 > 2
+
 int main(int argc, char const *argv[]) {
   Client client;
 

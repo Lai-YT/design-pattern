@@ -3,6 +3,9 @@
 #include "calculator.hpp"
 #include "strategy.hpp"
 
+// just add a new strategy if having a new calculation,
+// and still calling function from the Calculator
+
 int main(int argc, char const *argv[]) {
 
   Calculator calculator;

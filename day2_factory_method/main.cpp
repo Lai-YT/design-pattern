@@ -1,6 +1,8 @@
 #include "factory.hpp"
 #include "product.hpp"
 
+// always get products from the factory
+
 int main(int argc, char const *argv[]) {
 
   Factory* fries_fac = new FrenchFriesFactory();
