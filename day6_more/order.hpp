@@ -17,25 +17,20 @@ public:
 
   void AddDrink(Drink* drink) {
     drink_list_.push_back(drink);
+    total_price_ += drink->GetValue();
   }
 
   double GetTotalPrice(IDiscountStrategy* discount_strategy) {
-    double total_price = TotalPrice();
-    total_price = discount_strategy->GetValue(total_price);
-    delete discount_strategy;
+    double total_price = discount_strategy->GetValue(total_price_);
+    delete discount_strategy;   // strategy is disposable
+    
     return total_price;
   }
 
 private:
   std::vector<Drink*> drink_list_;
+  double total_price_ = 0;
 
-  double TotalPrice() {
-    double total_price = 0;
-    for (Drink* d : drink_list_) {
-      total_price += d->GetValue();
-    }
-    return total_price;
-  }
 };
 
 #endif /* end of include guard: ORDER_HPP_ */
