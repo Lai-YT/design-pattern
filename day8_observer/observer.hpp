@@ -16,7 +16,7 @@ public:
 class Student : public IObserver {
 public:
   Student(IObservable* observable);
-  virtual ~Student();
+  virtual ~Student() = default;
 
   void Update() const override;
 
