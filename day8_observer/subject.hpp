@@ -4,7 +4,7 @@
 #include <list>
 #include <string>
 
-class IObserver;
+class IObserver;  // include "observer.hpp" in the .cpp file
 
 class ISubject {
 public:

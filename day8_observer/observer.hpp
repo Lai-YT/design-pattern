@@ -3,7 +3,7 @@
 
 #include <string>
 
-class Subject;
+class Subject;  // include "subject.hpp" in the .cpp file
 
 class IObserver {
 public:
