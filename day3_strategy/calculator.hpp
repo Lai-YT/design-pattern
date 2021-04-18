@@ -38,10 +38,13 @@ public:
       case DoType::kDivide:
         strategy_ = new Divide();
         break;
+      default:
+        strategy_ = nullptr;
+        break;
     }
   }
 private:
-  IStrategy* strategy_;
+  IStrategy* strategy_ = nullptr;
 };
 
 #endif /* end of include guard: CACULATOR_HPP_ */
