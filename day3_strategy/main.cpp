@@ -10,16 +10,16 @@ int main(int argc, char const *argv[]) {
 
   Calculator calculator;
 
-  calculator.SetStrategy(DoType::kAdd);
+  calculator.SetStrategy(EnumDo::Add);
   std::cout << "5 + 9 = " << calculator.Execute(5, 9) << '\n';
 
-  calculator.SetStrategy(DoType::kMinus);
+  calculator.SetStrategy(EnumDo::Minus);
   std::cout << "5 - 9 = " << calculator.Execute(5, 9) << '\n';
 
-  calculator.SetStrategy(DoType::kMultyply);
+  calculator.SetStrategy(EnumDo::Multiply);
   std::cout << "5 * 9 = " << calculator.Execute(5, 9) << '\n';
 
-  calculator.SetStrategy(DoType::kDivide);
+  calculator.SetStrategy(EnumDo::Divide);
   std::cout << "5 / 9 = " << calculator.Execute(5, 9) << '\n';
 
   return 0;

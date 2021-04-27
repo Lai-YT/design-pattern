@@ -13,6 +13,7 @@ public:
     delete on_start_;
     delete on_finish_;
   }
+
   // Initialize commands.
   void SetOnStart(Command* command) {
     on_start_ = command;
@@ -21,6 +22,7 @@ public:
   void SetOnFinish(Command* command) {
     on_finish_ = command;
   }
+  
   // The Invoker does not depend on concrete command or receiver classes. The
   // Invoker passes a request to a receiver indirectly, by executing a command.
   void DoSomethingImportant() {
@@ -34,7 +36,7 @@ public:
       on_finish_->Execute();
     }
   }
-  
+
 private:
   Command *on_start_ = nullptr;
   Command *on_finish_ = nullptr;

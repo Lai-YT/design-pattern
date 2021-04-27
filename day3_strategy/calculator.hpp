@@ -3,8 +3,8 @@
 
 #include "strategy.hpp"
 
-enum class DoType {
-  kAdd, kMinus, kDivide, kMultyply
+enum class EnumDo {
+  Add, Minus, Divide, Multiply
 };
 
 class Calculator {
@@ -24,18 +24,18 @@ public:
   }
 
   // simple factory pattern
-  void SetStrategy(DoType type) {
-    switch (type) {
-      case DoType::kAdd:
+  void SetStrategy(EnumDo do_type) {
+    switch (do_type) {
+      case EnumDo::Add:
         strategy_ = new Add();
         break;
-      case DoType::kMinus:
+      case EnumDo::Minus:
         strategy_ = new Minus();
         break;
-      case DoType::kMultyply:
-        strategy_ = new Multyply();
+      case EnumDo::Multiply:
+        strategy_ = new Multiply();
         break;
-      case DoType::kDivide:
+      case EnumDo::Divide:
         strategy_ = new Divide();
         break;
       default:

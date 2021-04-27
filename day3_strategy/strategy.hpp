@@ -20,7 +20,7 @@ class Minus : public IStrategy {
   }
 };
 
-class Multyply : public IStrategy {
+class Multiply : public IStrategy {
   int Calculate(int a, int b) override {
     return a * b;
   }
