@@ -16,5 +16,8 @@ int main(int argc, char const *argv[]) {
   std::cout << &(SingletonFactory::GetHamburgerFactory()) << '\n';
   std::cout << &(SingletonFactory::GetHamburgerFactory()) << '\n';
 
+  delete hamburger;
+  delete cola;
+
   return 0;
 }
