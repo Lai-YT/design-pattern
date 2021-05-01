@@ -1,6 +1,8 @@
 // It makes sense to use the Builder pattern only when your products are quite
 // complex and require extensive configuration.
 
+#include <memory>
+
 #include "builder.hpp"
 #include "director.hpp"
 #include "product.hpp"
@@ -9,38 +11,30 @@
 // initiates the construction process. The end result is retrieved from the
 // builder object.
 void ClientCode(Director& director) {
-  ConcreteBuilder* builder = new ConcreteBuilder();
+  auto builder = std::make_shared<ConcreteBuilder>();
   director.SetBuilder(builder);
 
   // build product
   director.BuildMinimalViableProduct();
 
   // get product
-  Product* min_product = builder->GetProduct();
+  std::unique_ptr<Product> min_product = builder->GetProduct();
   min_product->ListParts();
-  delete min_product;
-  min_product = nullptr;
 
   // build product
   director.BuildFullFeaturedProduct();
 
   // get product
-  Product* full_product = builder->GetProduct();
+  std::unique_ptr<Product> full_product = builder->GetProduct();
   full_product->ListParts();
-  delete full_product;
-  full_product = nullptr;
 
   // Remember, the Builder pattern can be used without a Director class.
   std::cout << "Building customized product..." << '\n';
   builder->ProducePartA();
   builder->ProducePartC();
   std::cout << "Done." << '\n';
-  Product* custom_product = builder->GetProduct();
+  std::unique_ptr<Product> custom_product = builder->GetProduct();
   custom_product->ListParts();
-  delete custom_product;
-  custom_product = nullptr;
-
-  delete builder;
 }
 
 int main(int argc, char const *argv[]) {

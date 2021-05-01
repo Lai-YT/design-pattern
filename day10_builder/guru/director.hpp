@@ -2,6 +2,8 @@
 #define DIRECTOR_HPP_
 
 #include <iostream>
+#include <memory>
+#include <utility>
 
 #include "builder.hpp"
 
@@ -11,10 +13,9 @@ class Director {
 public:
   Director() = default;
 
-  // Director does not handle any memory allocation.
   ~Director() = default;
 
-  void SetBuilder(Builder* builder) {
+  void SetBuilder(std::shared_ptr<Builder> builder) {
     builder_ = builder;
   }
 
@@ -35,7 +36,7 @@ public:
   }
 
 private:
-  Builder* builder_ = nullptr;
+  std::shared_ptr<Builder> builder_ = nullptr;
 };
 
 #endif /* end of include guard: DIRECTOR_HPP_ */

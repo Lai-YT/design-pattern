@@ -2,6 +2,8 @@
 #define BUILDER_HPP_
 
 #include <iostream>
+#include <memory>
+#include <utility>
 
 #include "product.hpp"
 
@@ -20,11 +22,14 @@ public:
   // A fresh builder instance should contain a blank product object, which is
   // used in further assembly.
   ConcreteBuilder() {
-    this->_Reset();
+    this->Reset();
   }
 
-  ~ConcreteBuilder() {
-    delete product_;
+  ~ConcreteBuilder() = default;
+
+  void Reset() {
+    std::cout << "Builder: Ready for a new build." << '\n';
+    product_ = std::make_unique<Product>();
   }
 
   // All production steps work with the same product instance.
@@ -40,22 +45,14 @@ public:
     product_->AddPart("PartC");
   }
 
-  // The user of this function is responsible to release the memory.
-  Product* GetProduct() {
-    Product* ready_product = product_;
-    this->_Reset();
+  std::unique_ptr<Product> GetProduct() {
+    auto ready_product = std::move(product_);
+    this->Reset();
     return ready_product;
   }
 
 private:
-  Product* product_;
-
-  // Calling Reset individually causes memory leak,
-  // so make it private.
-  void _Reset() {
-    std::cout << "Builder: Ready for a new build." << '\n';
-    product_ = new Product();
-  }
+  std::unique_ptr<Product> product_;
 };
 
 #endif /* end of include guard: BUILDER_HPP_ */
