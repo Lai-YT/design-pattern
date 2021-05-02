@@ -14,17 +14,11 @@ void ClientCode(Director& director) {
   auto builder = std::make_shared<ConcreteBuilder>();
   director.SetBuilder(builder);
 
-  // build product
   director.BuildMinimalViableProduct();
-
-  // get product
   std::unique_ptr<Product> min_product = builder->GetProduct();
   min_product->ListParts();
 
-  // build product
   director.BuildFullFeaturedProduct();
-
-  // get product
   std::unique_ptr<Product> full_product = builder->GetProduct();
   full_product->ListParts();
 
@@ -36,6 +30,7 @@ void ClientCode(Director& director) {
   std::unique_ptr<Product> custom_product = builder->GetProduct();
   custom_product->ListParts();
 }
+
 
 int main(int argc, char const *argv[]) {
   Director director;

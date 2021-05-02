@@ -17,6 +17,7 @@ public:
   virtual void ProducePartC() const = 0;
 };
 
+
 class ConcreteBuilder : public Builder {
 public:
   // A fresh builder instance should contain a blank product object, which is

@@ -5,9 +5,9 @@
 #include "computer.hpp"
 #include "computer_seller.hpp"
 
+
 void ClientCode() {
   ConcreteComputerBuilder* concrete_computer_builder = new ConcreteComputerBuilder();
-
   ComputerSeller computer_seller(concrete_computer_builder);
 
   Computer* low_spec_computer = computer_seller.LowSpec();
@@ -31,6 +31,7 @@ void ClientCode() {
   delete custom_computer;
   delete concrete_computer_builder;
 }
+
 
 int main(int argc, char const *argv[]) {
   ClientCode();

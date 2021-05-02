@@ -5,21 +5,22 @@
 
 #include "computer.hpp"
 
+
 // Builders take no respnsibility for memory management
 class ComputerBuilder {
 public:
   ComputerBuilder()
     :computer_(new Computer()) {}
 
-  virtual ~ComputerBuilder() = default;
+  virtual ~ComputerBuilder() {
+    delete computer_;
+  }
 
   virtual ComputerBuilder* BuildProcessor(Computer::Processor processor) = 0;
   virtual ComputerBuilder* BuildMemory(Computer::Memory memory) = 0;
   virtual ComputerBuilder* BuildGraphics(Computer::Graphics graphics) = 0;
   virtual ComputerBuilder* BuildStorage(Computer::Storage storage) = 0;
 
-  // memory leaks after the last build,
-  // the un-returned new computer isn't deleted
   Computer* Build() {
     Computer* computer = computer_;
     computer_ = new Computer();
