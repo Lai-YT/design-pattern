@@ -2,6 +2,7 @@
 #define COMPUTER_SELLER_HPP_
 
 #include <iostream>
+#include <memory>
 
 #include "computer_builder.hpp"
 #include "computer.hpp"
@@ -9,10 +10,10 @@
 
 class ComputerSeller {
 public:
-  ComputerSeller(ComputerBuilder* computer_builder)
+  ComputerSeller(std::shared_ptr<ComputerBuilder> computer_builder)
     :computer_builder_(computer_builder) {}
 
-  Computer* LowSpec() {
+  std::unique_ptr<Computer> LowSpec() {
     std::cout << "Start building low spec computer..." << '\n';
     return computer_builder_
            ->BuildProcessor(Computer::Processor("2.2GHz, 6 core, Intel Core i7"))
@@ -22,7 +23,7 @@ public:
            ->Build();
   }
 
-  Computer* HighSpec() {
+  std::unique_ptr<Computer> HighSpec() {
     std::cout << "Start building high spec computer..." << '\n';
     return computer_builder_
            ->BuildProcessor(Computer::Processor("2.6GHz, 6 core, Intel Core i7"))
@@ -33,7 +34,7 @@ public:
   }
 
 private:
-  ComputerBuilder* computer_builder_;
+  std::shared_ptr<ComputerBuilder> computer_builder_;
 };
 
 #endif /* end of include guard: COMPUTER_SELLER_HPP_ */

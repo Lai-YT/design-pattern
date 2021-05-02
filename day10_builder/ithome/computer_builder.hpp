@@ -2,34 +2,31 @@
 #define COMPUTER_BUILDER_HPP_
 
 #include <iostream>
+#include <memory>
+#include <utility>
 
 #include "computer.hpp"
 
 
-// Builders take no respnsibility for memory management
 class ComputerBuilder {
 public:
   ComputerBuilder()
-    :computer_(new Computer()) {}
-
-  virtual ~ComputerBuilder() {
-    delete computer_;
-  }
+    :computer_(std::make_unique<Computer>()) {}
 
   virtual ComputerBuilder* BuildProcessor(Computer::Processor processor) = 0;
   virtual ComputerBuilder* BuildMemory(Computer::Memory memory) = 0;
   virtual ComputerBuilder* BuildGraphics(Computer::Graphics graphics) = 0;
   virtual ComputerBuilder* BuildStorage(Computer::Storage storage) = 0;
 
-  Computer* Build() {
-    Computer* computer = computer_;
-    computer_ = new Computer();
+  std::unique_ptr<Computer> Build() {
+    std::unique_ptr<Computer> computer = std::move(computer_);
+    computer_ = std::make_unique<Computer>();
     std::cout << "End building." << '\n';
     return computer;
   }
 
 protected:
-  Computer* computer_;
+  std::unique_ptr<Computer> computer_;
 };
 
 
