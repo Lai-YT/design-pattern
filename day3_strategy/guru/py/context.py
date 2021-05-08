@@ -36,7 +36,6 @@ class Context():
 
         self._strategy = strategy
 
-
     def do_some_business_logic(self) -> None:
         """
         The Context delegates some work to the Strategy object instead of
