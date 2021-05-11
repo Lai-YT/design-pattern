@@ -1,6 +1,8 @@
 #ifndef CLIENT_HPP_
 #define CLIENT_HPP_
 
+#include <cctype>
+
 #include "Drink.hpp"
 
 class Client {
@@ -9,7 +11,7 @@ public:
     for (char& c : drink) {
       c = std::tolower(c);
     }
-    
+
     if (drink == "tea") {
       return new Tea(sugar_type, ice_type);
     } else if (drink == "coffee") {

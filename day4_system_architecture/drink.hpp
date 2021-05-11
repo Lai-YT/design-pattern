@@ -1,7 +1,6 @@
 #ifndef DRINK_HPP_
 #define DRINK_HPP_
 
-#include <cctype>
 #include <iostream>
 #include <string>
 
