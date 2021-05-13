@@ -23,13 +23,13 @@ public:
   // object stored in the static field.
   static std::shared_ptr<Singleton> GetInstance(const std::string& value) {
     // lock the current thread
-    std::lock_guard<std::mutex> inst_lock(inst_mutex);
+    std::lock_guard<std::mutex> inst_lock(inst_mutex_);
 
     // This is a safer way to create an instance. instance = new Singleton is
     // dangeruous in case two instance threads wants to access at the same time.
     if (!singleton_) {
       std::cout << "Generating new instance..." << '\n';
-      
+
       // std::make_shared can't be used since the ctor is private
       singleton_ = std::shared_ptr<Singleton>(new Singleton(value));
     }
@@ -49,7 +49,7 @@ public:
 private:
   std::string value_;
   static std::shared_ptr<Singleton> singleton_;
-  static std::mutex inst_mutex;
+  static std::mutex inst_mutex_;
 
 
   // The Singleton's constructor should always be private to prevent direct
@@ -59,6 +59,6 @@ private:
 };
 
 std::shared_ptr<Singleton> Singleton::singleton_ = nullptr;
-std::mutex Singleton::inst_mutex;
+std::mutex Singleton::inst_mutex_;
 
 #endif /* end of include guard: SINGLETON_HPP_ */
