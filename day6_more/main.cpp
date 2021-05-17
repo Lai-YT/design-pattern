@@ -4,6 +4,7 @@
 #include "order.hpp"
 #include "strategy.hpp"
 
+
 int main(int argc, char const *argv[]) {
   DrinkOrder drink_order;
 
@@ -15,6 +16,8 @@ int main(int argc, char const *argv[]) {
   std::cout << price << '\n';
   price = drink_order.GetTotalPrice(new MultiplyStrategy(0.9));
   std::cout << price << '\n';
-
+  // 200
+  // 180
+  
   return 0;
 }
