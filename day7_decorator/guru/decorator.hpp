@@ -1,6 +1,7 @@
 #ifndef DECORATOR_HPP_
 #define DECORATOR_HPP_
 
+#include <memory>
 #include <string>
 
 #include "component.hpp"
@@ -12,7 +13,7 @@
 // it.
 class Decorator : public Component {
 public:
-  Decorator(Component* component)
+  Decorator(std::shared_ptr<Component> component)
     :component_(component) {}
 
   // The Decorator delegates all work to the wrapped component.
@@ -21,13 +22,13 @@ public:
   }
 
 private:
-  Component* component_;
+  std::shared_ptr<Component> component_;
 };
 
 // Concrete Decorators call the wrapped object and alter its result in some way.
 class ConcreteDecoratorA : public Decorator {
 public:
-  ConcreteDecoratorA(Component* component)
+  ConcreteDecoratorA(std::shared_ptr<Component> component)
     :Decorator(component) {}
 
   // Decorators may call parent implementation of the operation, instead of
@@ -42,7 +43,7 @@ public:
 // wrapped object.
 class ConcreteDecoratorB : public Decorator {
 public:
-  ConcreteDecoratorB(Component* component)
+  ConcreteDecoratorB(std::shared_ptr<Component> component)
     :Decorator(component) {}
 
   std::string Operation() const override {
