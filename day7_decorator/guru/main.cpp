@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 #include "component.hpp"
 #include "decorator.hpp"
