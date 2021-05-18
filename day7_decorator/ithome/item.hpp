@@ -2,42 +2,46 @@
 #define ITEM_HPP_
 
 #include <iostream>
+#include <memory>
 
 #include "order.hpp"
 
+// Items are components, but they can also decorate themselves.
 class Item : public Order {
 public:
-  Item() = default;
-  virtual ~Item() {
-    delete order_;
-  };
+  virtual ~Item() = default;
 
-  void Decorate(Order* order) {
+  void Decorate(std::shared_ptr<Order> order) {
     order_ = order;
   }
+
   void Show() override {
     if (order_) {
       order_->Show();
     }
   }
+
 private:
-  Order* order_ = nullptr;
+  std::shared_ptr<Order> order_ = nullptr;
 };
+
 
 class Drink : public Item {
 public:
-  Drink(): Item() {}
+  Drink() = default;
   virtual ~Drink() = default;
 
   void Show() override {
     Item::Show();
     AddDrink();
   }
+
 private:
   void AddDrink() const {
-    std::cout << "add a cup of drink" << '\n';
+    std::cout << "--> drink" << '\n';
   }
 };
+
 
 class Salad : public Item {
 public:
@@ -48,11 +52,13 @@ public:
     Item::Show();
     AddSalad();
   }
+
 private:
   void AddSalad() const {
-    std::cout << "add a plate of salad" << '\n';
+    std::cout << "--> salad" << '\n';
   }
 };
+
 
 class Soup : public Item {
 public:
@@ -63,11 +69,13 @@ public:
     Item::Show();
     AddSoup();
   }
+
 private:
   void AddSoup() const {
-    std::cout << "add a bowl of soup" << '\n';
+    std::cout << "--> soup" << '\n';
   }
 };
+
 
 class MainMeal : public Item {
 public:
@@ -78,28 +86,12 @@ public:
     Item::Show();
     AddMainMeal();
   }
+
 private:
   void AddMainMeal() const {
-    std::cout << "add main meal " << '\n';
+    std::cout << "--> main meal " << '\n';
   }
 };
 
-// use LastOrder to wrap the last order,
-// so make sure the destructors of all orders are chain-invoked
-
-class LastOrder final : public Item {
-public:
-  LastOrder() = delete;
-  LastOrder(Order* order):Item() {
-    Item::Decorate(order);
-  }
-  ~LastOrder() = default;
-
-  using Item::Show;
-
-  // for safety, allocations in heap are forbidden
-  void* operator new(size_t) = delete;
-  void* operator new[](size_t) = delete;
-};
 
 #endif /* end of include guard: ITEM_HPP_ */

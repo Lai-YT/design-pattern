@@ -1,30 +1,33 @@
 #ifndef SET_HPP_
 #define SET_HPP_
 
+#include <memory>
+
 #include "order.hpp"
 
+// Sets are both components and decorators that decorate multiple Items
+// inside automatically.
 class Set : public Order {
 public:
-  Set() = default;
-  virtual ~Set() {
-    delete order_;
-  }
+  virtual ~Set() = default;
 
-  void Decorate(Order* order) {
+  void Decorate(std::shared_ptr<Order> order) {
     order_ = order;
   }
+
   void Show() override {
     if (order_) {
       order_->Show();
     }
   }
+
 private:
-  Order* order_ = nullptr;
+  std::shared_ptr<Order> order_ = nullptr;
 };
+
 
 class SimpleSet : public Set {
 public:
-  SimpleSet() = default;
   virtual ~SimpleSet() = default;
 
   void Show() override {
@@ -34,11 +37,14 @@ public:
 
 private:
   void AddSet() {
-    Salad* salad = new Salad();
-    MainMeal* main_meal = new MainMeal();
-    Drink* drink = new Drink();
+    auto salad = std::make_shared<Salad>();
+
+    auto main_meal = std::make_shared<MainMeal>();
     main_meal->Decorate(salad);
+
+    auto drink = std::make_shared<Drink>();
     drink->Decorate(main_meal);
+    
     Set::Decorate(drink);
   }
 };

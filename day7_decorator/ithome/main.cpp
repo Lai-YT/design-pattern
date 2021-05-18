@@ -1,3 +1,4 @@
+#include <memory>
 #include <iostream>
 
 #include "item.hpp"
@@ -5,23 +6,22 @@
 #include "set.hpp"
 
 int main(int argc, char const *argv[]) {
+  std::cout << "Customization:" << '\n';
 
-  Drink* drink = new Drink();
-  MainMeal* main_meal = new MainMeal();
-  main_meal->Decorate(drink);
+  auto soup = std::make_shared<Soup>();
 
-  Salad* salad = new Salad();
-  salad->Decorate(main_meal);
+  auto salad = std::make_shared<Salad>();
+  salad->Decorate(soup);
 
-  Soup* soup = new Soup();
-  soup->Decorate(salad);
+  auto main_meal = std::make_shared<MainMeal>();
+  main_meal->Decorate(salad);
 
-  // 'LastOrder' handles all memory allocations,
-  //  all destructors of related 'Order's are guaranteed to be called
-  LastOrder last_order(soup);
-  last_order.Show();
-  
-  std::cout << "---" << '\n';
+  auto drink = std::make_shared<Drink>();
+  drink->Decorate(main_meal);
+
+  drink->Show();
+
+  std::cout << "\nSets:" << '\n';
 
   SimpleSet simple_set;
   simple_set.Show();
