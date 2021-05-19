@@ -5,6 +5,7 @@
 #include "order.hpp"
 #include "set.hpp"
 
+
 int main(int argc, char const *argv[]) {
   std::cout << "Customization:" << '\n';
 
@@ -25,6 +26,16 @@ int main(int argc, char const *argv[]) {
 
   SimpleSet simple_set;
   simple_set.Show();
+  // Customization:
+  // --> soup
+  // --> salad
+  // --> main meal
+  // --> drink
+  //
+  // Sets:
+  // --> salad
+  // --> main meal
+  // --> drink
 
   return 0;
 }

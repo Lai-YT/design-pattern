@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <string>
+#include <utility>
 
 #include "component.hpp"
 
@@ -13,8 +14,10 @@
 // it.
 class Decorator : public Component {
 public:
-  Decorator(std::shared_ptr<Component> component)
-    :component_(component) {}
+  // After decoration, the old component should be wrapped and not allowed to
+  // take operation, so use unique_ptr and call move
+  Decorator(std::unique_ptr<Component>&& component)
+    :component_(std::move(component)) {}
 
   // The Decorator delegates all work to the wrapped component.
   std::string Operation() const override {
@@ -22,14 +25,14 @@ public:
   }
 
 private:
-  std::shared_ptr<Component> component_;
+  std::unique_ptr<Component> component_;
 };
 
 // Concrete Decorators call the wrapped object and alter its result in some way.
 class ConcreteDecoratorA : public Decorator {
 public:
-  ConcreteDecoratorA(std::shared_ptr<Component> component)
-    :Decorator(component) {}
+  ConcreteDecoratorA(std::unique_ptr<Component>&& component)
+    :Decorator(std::move(component)) {}
 
   // Decorators may call parent implementation of the operation, instead of
   // calling the wrapped object directly. This approach simplifies extension of
@@ -43,8 +46,8 @@ public:
 // wrapped object.
 class ConcreteDecoratorB : public Decorator {
 public:
-  ConcreteDecoratorB(std::shared_ptr<Component> component)
-    :Decorator(component) {}
+  ConcreteDecoratorB(std::unique_ptr<Component>&& component)
+    :Decorator(std::move(component)) {}
 
   std::string Operation() const override {
     return "ConcreteDecoratorB(" + Decorator::Operation() + ")";
