@@ -1,0 +1,62 @@
+from overrides import overrides
+
+from component import *
+
+
+class Decorator(Component):
+    """
+    The base Decorator class follows the same interface as the other components.
+    The primary purpose of this class is to define the wrapping interface for
+    all concrete decorators. The default implementation of the wrapping code
+    might include a field for storing a wrapped component and the means to
+    initialize it.
+    """
+
+    def __init__(self, component: Component) -> None:
+        self._component: Component = component
+
+    @property
+    def component(self) -> str:
+        """
+        The Decorator delegates all work to the wrapped component.
+        """
+
+        return self._component
+
+    @overrides
+    def operation(self) -> str:
+        return self._component.operation()
+
+
+class ConcreteDecoratorA(Decorator):
+    """
+    Concrete Decorators call the wrapped object and alter its result in some
+    way.
+    """
+
+    def __init__(self, component: Component) -> None:
+        super().__init__(component)
+
+    @overrides
+    def operation(self) -> str:
+        """
+        Decorators may call parent implementation of the operation, instead of
+        calling the wrapped object directly. This approach simplifies extension
+        of decorator classes.
+        """
+        
+        return f'ConcreteDecoratorA({super().operation()})'
+
+
+class ConcreteDecoratorB(Decorator):
+    """
+    Decorators can execute their behavior either before or after the call to a
+    wrapped object.
+    """
+
+    def __init__(self, component: Component) -> None:
+        super().__init__(component)
+
+    @overrides
+    def operation(self) -> str:
+        return f'ConcreteDecoratorB({super().operation()})'
