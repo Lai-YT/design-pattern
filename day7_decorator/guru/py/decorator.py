@@ -15,16 +15,12 @@ class Decorator(Component):
     def __init__(self, component: Component) -> None:
         self._component: Component = component
 
-    @property
-    def component(self) -> Component:
+    @overrides
+    def operation(self) -> str:
         """
         The Decorator delegates all work to the wrapped component.
         """
 
-        return self._component
-
-    @overrides
-    def operation(self) -> str:
         return self._component.operation()
 
 
@@ -45,7 +41,7 @@ class ConcreteDecoratorA(Decorator):
         of decorator classes.
         """
 
-        return f'ConcreteDecoratorA({self.component.operation()})'
+        return f'ConcreteDecoratorA({super().operation()})'
 
 
 class ConcreteDecoratorB(Decorator):
@@ -59,4 +55,4 @@ class ConcreteDecoratorB(Decorator):
 
     @overrides
     def operation(self) -> str:
-        return f'ConcreteDecoratorB({self.component.operation()})'
+        return f'ConcreteDecoratorB({super().operation()})'
