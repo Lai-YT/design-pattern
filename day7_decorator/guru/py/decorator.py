@@ -16,7 +16,7 @@ class Decorator(Component):
         self._component: Component = component
 
     @property
-    def component(self) -> str:
+    def component(self) -> Component:
         """
         The Decorator delegates all work to the wrapped component.
         """
@@ -44,8 +44,8 @@ class ConcreteDecoratorA(Decorator):
         calling the wrapped object directly. This approach simplifies extension
         of decorator classes.
         """
-        
-        return f'ConcreteDecoratorA({super().operation()})'
+
+        return f'ConcreteDecoratorA({self.component.operation()})'
 
 
 class ConcreteDecoratorB(Decorator):
@@ -59,4 +59,4 @@ class ConcreteDecoratorB(Decorator):
 
     @overrides
     def operation(self) -> str:
-        return f'ConcreteDecoratorB({super().operation()})'
+        return f'ConcreteDecoratorB({self.component.operation()})'
