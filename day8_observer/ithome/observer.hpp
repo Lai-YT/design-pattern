@@ -5,13 +5,15 @@
 
 class IObservable;
 
+
 class IObserver {
 public:
   IObserver() = default;
   virtual ~IObserver() = default;
-
+  
   virtual void Update() const = 0;
 };
+
 
 class Student : public IObserver {
 public:

@@ -1,19 +1,19 @@
 #include "observer.hpp"
 #include "observable.hpp"
 
+
 int main(int argc, char const *argv[]) {
-  IObservable* podcast = new PodcastA("English broadcast");
-  IObserver* student = new Student(podcast);
-  podcast->Add(student);
+  PodcastA podcast("English broadcast");
+  Student student(&podcast);
+  podcast.Add(&student);
 
-  podcast->NotifyObservers();
+  podcast.NotifyObservers();
 
-  podcast->SetName("Pop song");
+  podcast.SetName("Pop song");
 
-  podcast->NotifyObservers();
-
-  delete podcast;
-  delete student;
+  podcast.NotifyObservers();
+  // heard English broadcast
+  // heard Pop song
 
   return 0;
 }

@@ -3,9 +3,9 @@
 
 #include "observable.hpp"
 
-PodcastA::PodcastA(std::string name)
-  :name_(name)
-{}
+
+PodcastA::PodcastA(const std::string& name)
+  :name_(name) {}
 
 void PodcastA::Add(IObserver* observer) {
   observers_.push_back(observer);
@@ -21,6 +21,6 @@ std::string PodcastA::GetName() const {
   return name_;
 }
 
-void PodcastA::SetName(std::string name) {
+void PodcastA::SetName(const std::string& name) {
   name_ = name;
 }
