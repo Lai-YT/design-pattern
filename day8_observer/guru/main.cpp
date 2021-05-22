@@ -1,36 +1,30 @@
-// codes from the link below:
-// https://refactoring.guru/design-patterns/observer/cpp/example
-
 #include "observer.hpp"
 #include "subject.hpp"
 
+
 void ClientCode() {
-  Subject *subject = new Subject;
-  Observer *observer1 = new Observer(*subject);
-  Observer *observer2 = new Observer(*subject);
-  Observer *observer3 = new Observer(*subject);
+  // Since we don't need polymorphism here,
+  // Subject and Observers are not in pointer type.
+  Subject subject;
 
-  subject->CreateMessage("Hello World! :D");
-  observer3->RemoveMeFromTheList();
+  Observer observer1(subject);
+  Observer observer2(subject);
+  Observer observer3(subject);
 
-  subject->CreateMessage("The weather is hot today! :P");
-  Observer *observer4 = new Observer(*subject);
+  subject.CreateMessage("Hello World! :D");
+  observer3.RemoveMeFromTheList();
 
-  observer2->RemoveMeFromTheList();
-  Observer *observer5 = new Observer(*subject);
+  subject.CreateMessage("The weather is hot today! :P");
+  Observer observer4(subject);
 
-  subject->CreateMessage("My new car is great :)");
+  observer2.RemoveMeFromTheList();
+  Observer observer5(subject);
 
-  observer5->RemoveMeFromTheList();
-  observer4->RemoveMeFromTheList();
-  observer1->RemoveMeFromTheList();
+  subject.CreateMessage("My new car is great :)");
 
-  delete observer5;
-  delete observer4;
-  delete observer3;
-  delete observer2;
-  delete observer1;
-  delete subject;
+  observer5.RemoveMeFromTheList();
+  observer4.RemoveMeFromTheList();
+  observer1.RemoveMeFromTheList();
 }
 
 int main(int argc, char const *argv[]) {

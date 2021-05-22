@@ -3,7 +3,8 @@
 #include "observer.hpp"
 #include "subject.hpp"
 
-Observer::Observer(Subject &subject)
+
+Observer::Observer(Subject& subject)
   :subject_(subject) {
   subject_.Attach(this);
   number_ = ++Observer::static_number_;
@@ -14,9 +15,9 @@ Observer::~Observer() {
   std::cout << "Goodebye, I was the Observer \"" << number_ << "\".\n";
 }
 
-void Observer::Update(const std::string &message_from_subject) {
+void Observer::Update(const std::string& message_from_subject) {
   message_from_subject_ = message_from_subject;
-  PrintInfo();
+  this->PrintInfo();
 }
 
 void Observer::RemoveMeFromTheList() {

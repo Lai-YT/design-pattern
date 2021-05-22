@@ -6,28 +6,31 @@
 
 class IObserver;  // include "observer.hpp" in the .cpp file
 
+
 class ISubject {
 public:
   virtual ~ISubject() = default;
-  virtual void Attach(IObserver *observer) = 0;
-  virtual void Detach(IObserver *observer) = 0;
+  virtual void Attach(IObserver* observer) = 0;
+  virtual void Detach(IObserver* observer) = 0;
   virtual void Notify() = 0;
 };
 
+// Subject handles no life time of the pointers in list
 class Subject : public ISubject {
 public:
   Subject() = default;
   virtual ~Subject();
-  void Attach(IObserver *observer) override;
-  void Detach(IObserver *observer) override;
+  void Attach(IObserver* observer) override;
+  void Detach(IObserver* observer) override;
   void Notify() override;
-  void CreateMessage(std::string message = "Empty");
+  void CreateMessage(const std::string& message = "Empty");
   void HowManyObserver() const;
   void SomeBusinessLogic();
 
 private:
-    std::list<IObserver *> list_observer_;
-    std::string message_;
+  std::list<IObserver*> list_observer_;
+  std::string message_;
 };
+
 
 #endif /* end of include guard: SUBJECT_HPP_ */

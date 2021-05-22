@@ -5,23 +5,25 @@
 
 class Subject;  // include "subject.hpp" in the .cpp file
 
+
 class IObserver {
 public:
   virtual ~IObserver() = default;
-  virtual void Update(const std::string &message_from_subject) = 0;
+  virtual void Update(const std::string& message_from_subject) = 0;
 };
+
 
 class Observer : public IObserver {
 public:
-  Observer(Subject &subject);
+  Observer(Subject& subject);
   virtual ~Observer();
-  void Update(const std::string &message_from_subject) override;
+  void Update(const std::string& message_from_subject) override;
   void RemoveMeFromTheList();
   void PrintInfo();
 
 private:
   std::string message_from_subject_;
-  Subject &subject_;
+  Subject& subject_;
   static int static_number_ ;
   int number_;
 };
