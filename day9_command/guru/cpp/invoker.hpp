@@ -1,6 +1,9 @@
 #ifndef INVOKER_HPP_
 #define INVOKER_HPP_
 
+#include <memory>
+#include <utility>
+
 #include "command.hpp"
 
 // The Invoker is associated with one or several commands. It sends a request to
@@ -9,20 +12,15 @@ class Invoker {
 public:
   Invoker() = default;
 
-  ~Invoker() {
-    delete on_start_;
-    delete on_finish_;
-  }
-
   // Initialize commands.
-  void SetOnStart(Command* command) {
-    on_start_ = command;
+  void SetOnStart(std::unique_ptr<Command> command) {
+    on_start_ = std::move(command);
   }
 
-  void SetOnFinish(Command* command) {
-    on_finish_ = command;
+  void SetOnFinish(std::unique_ptr<Command> command) {
+    on_finish_ = std::move(command);
   }
-  
+
   // The Invoker does not depend on concrete command or receiver classes. The
   // Invoker passes a request to a receiver indirectly, by executing a command.
   void DoSomethingImportant() {
@@ -38,8 +36,9 @@ public:
   }
 
 private:
-  Command *on_start_ = nullptr;
-  Command *on_finish_ = nullptr;
+  std::unique_ptr<Command> on_start_ = nullptr;
+  std::unique_ptr<Command> on_finish_ = nullptr;
 };
+
 
 #endif /* end of include guard: INVOKER_HPP_ */

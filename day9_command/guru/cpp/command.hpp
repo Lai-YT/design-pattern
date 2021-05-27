@@ -16,7 +16,7 @@ public:
 // Some commands can implement simple operations on their own.
 class SimpleCommand : public Command {
 public:
-  explicit SimpleCommand(std::string pay_load)
+  explicit SimpleCommand(const std::string& pay_load)
     :pay_load_(pay_load) {}
 
   void Execute() const override {
@@ -32,7 +32,7 @@ private:
 // called "receivers."
 class ComplexCommand : public Command {
 public:
-  
+
   // Complex commands can accept one or several receiver objects along with any
   // context data via the constructor.
   ComplexCommand(Receiver* receiver, const std::string& a, const std::string& b)
@@ -52,5 +52,6 @@ private:
   std::string a_;
   std::string b_;
 };
+
 
 #endif /* end of include guard: COMMAND_HPP_ */

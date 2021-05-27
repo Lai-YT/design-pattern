@@ -15,4 +15,5 @@ public:
   }
 };
 
+
 #endif /* end of include guard: RECEIVER_HPP_ */
