@@ -18,12 +18,13 @@ void ClientCode() {
   high_spec_computer->ShowDetails();
 
   std::cout << "Start builing customized computer..." << '\n';
-  std::unique_ptr<Computer> custom_computer = concrete_computer_builder
-                              ->BuildProcessor(Computer::Processor("2.9GHz, 6 core, Intel Core i9"))
-                              ->BuildMemory(Computer::Memory(32))
-                              ->BuildGraphics(Computer::Graphics("Radeon Pro 560X, 4GB GDDR5"))
-                              ->BuildStorage(Computer::Storage(4096))
-                              ->Build();
+  std::unique_ptr<Computer> custom_computer
+    = concrete_computer_builder
+      ->BuildProcessor(Computer::Processor("2.9GHz, 6 core, Intel Core i9"))
+      ->BuildMemory(Computer::Memory(32))
+      ->BuildGraphics(Computer::Graphics("Radeon Pro 560X, 4GB GDDR5"))
+      ->BuildStorage(Computer::Storage(4096))
+      ->Build();
   custom_computer->ShowDetails();
 }
 
