@@ -14,7 +14,6 @@ void ClientCode() {
   std::unique_ptr<Computer> low_spec_computer = computer_seller.LowSpec();
   low_spec_computer->ShowDetails();
 
-
   std::unique_ptr<Computer> high_spec_computer = computer_seller.HighSpec();
   high_spec_computer->ShowDetails();
 
