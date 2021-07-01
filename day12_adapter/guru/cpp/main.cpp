@@ -23,8 +23,10 @@ int main(int argc, char const *argv[]) {
   std::cout << '\n';
 
   std::cout << "Client: But I can work with it via the Adapter." << '\n';
-  auto adapter = std::make_unique<Adapter>(adaptee.get());
-  ClientCode(*adapter);
+  auto composition_adapter = std::make_unique<composition::Adapter>(adaptee.get());
+  ClientCode(*composition_adapter);
+  auto inheritance_adapter = std::make_unique<inheritance::Adapter>();
+  ClientCode(*inheritance_adapter);
   // Client: I can work just fine with the Target objects.
   // Target: The default target's behavior.
   //
@@ -32,7 +34,8 @@ int main(int argc, char const *argv[]) {
   // Adaptee: .eetpadA eht fo roivaheb laicepS
   //
   // Client: But I can work with it via the Adapter.
-  // Adapter: (TRANSLATED) Special behavior of the Adaptee.
+  // Composition Adapter: (TRANSLATED) Special behavior of the Adaptee.
+  // Inheritance Adapter: (TRANSLATED) Special behavior of the Adaptee.
 
   return 0;
 }
