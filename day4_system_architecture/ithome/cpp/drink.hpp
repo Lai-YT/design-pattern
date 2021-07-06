@@ -7,7 +7,7 @@
 // -----base class: Drink-----
 
 enum class SugarType {
-  kRegular, kLess, kHalf, lQuarter, kFree
+  kRegular, kLess, kHalf, kQuarter, kFree
 };
 
 enum class IceType {
