@@ -19,30 +19,30 @@ public:
   // a subsystem's capabilities.
   std::string Operation() const {
     std::string result = "Facade initializes subsystems.\n";
-    result += subsystem1_->Operation1();
-    result += subsystem2_->Operation1();
+    result += subsystem_1_->Operation1();
+    result += subsystem_2_->Operation1();
     result += "Facade orders subsystems to perform the action.\n";
-    result += subsystem1_->OperationN();
-    result += subsystem2_->OperationZ();
+    result += subsystem_1_->OperationN();
+    result += subsystem_2_->OperationZ();
     return result;
   }
 
   // Depending on your application's needs, you can provide the Facade with
   // existing subsystem objects or force the Facade to create them on its own.
   // In this case we will delegate the memory ownership to Facade Class.
-  Facade(std::unique_ptr<Subsystem1>&& subsystem1 = nullptr,
-         std::unique_ptr<Subsystem2>&& subsystem2 = nullptr)
-    :subsystem1_(std::move(subsystem1)),subsystem2_(std::move(subsystem2)) {
+  Facade(std::unique_ptr<Subsystem1>&& subsystem_1 = nullptr,
+         std::unique_ptr<Subsystem2>&& subsystem_2 = nullptr)
+    :subsystem_1_(std::move(subsystem_1)),subsystem_2_(std::move(subsystem_2)) {
     // Omit the second operand means that if the condition is true,
     // return the value which the condition itself implies.
-    subsystem1_ ?: subsystem1_ = std::make_unique<Subsystem1>();
-    subsystem2_ ?: subsystem2_ = std::make_unique<Subsystem2>();
+    subsystem_1_ ?: subsystem_1_ = std::make_unique<Subsystem1>();
+    subsystem_2_ ?: subsystem_2_ = std::make_unique<Subsystem2>();
     // Same as "if(!subsystem_) subsystem_ = std::make_unique<Subsystem>();".
   }
 
 private:
-  std::unique_ptr<Subsystem1> subsystem1_;
-  std::unique_ptr<Subsystem2> subsystem2_;
+  std::unique_ptr<Subsystem1> subsystem_1_;
+  std::unique_ptr<Subsystem2> subsystem_2_;
 
 };
 
