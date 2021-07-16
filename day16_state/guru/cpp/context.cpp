@@ -1,17 +1,17 @@
 #include <iostream>
+#include <memory>
 #include <typeinfo>
 
 #include "context.hpp"
 #include "state.hpp"
 
 
-void Context::TransitionTo(State* const state) {
-  std::cout << "Context: Transition to " << typeid(*state).name() << ".\n";
-  if (this->state_) {
-    delete this->state_;
-  }
+// weak_from_this is used instead of shared_from_this to break circular reference.
+void Context::TransitionTo(std::shared_ptr<State> state) {
+  // +2 on the name is just a manipulation on c-string for this specific case to remove prefix.
+  std::cout << "Context: Transition to " << typeid(*state).name() + 2 << ".\n";
   this->state_ = state;
-  this->state_->SetContext(this);
+  this->state_->SetContext(weak_from_this());
 }
 
 void Context::Request1() {
@@ -22,10 +22,8 @@ void Context::Request2() {
   this->state_->Handle2();
 }
 
-Context::Context(State* state) {
-  this->TransitionTo(state);
-}
-
-Context::~Context() {
-  delete this->state_;
+std::shared_ptr<Context> Context::CreateSharedWithInitState(std::shared_ptr<State> state) {
+  auto context = std::make_shared<Context>();
+  context->TransitionTo(state);
+  return context;
 }

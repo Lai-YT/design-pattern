@@ -1,6 +1,8 @@
 #ifndef STATE_HPP_
 #define STATE_HPP_
 
+#include <memory>
+
 #include "context.hpp"
 
 class Context;
@@ -11,7 +13,7 @@ class Context;
 // Context to another State.
 class State {
 public:
-  void SetContext(Context* const context);
+  void SetContext(std::weak_ptr<Context> context);
 
   virtual void Handle1() = 0;
   virtual void Handle2() = 0;
@@ -19,7 +21,7 @@ public:
   virtual ~State() = default;
 
 protected:
-  Context* context_;
+  std::weak_ptr<Context> context_;
 };
 
 // Concrete States implement various behaviors, associated with a state of the
