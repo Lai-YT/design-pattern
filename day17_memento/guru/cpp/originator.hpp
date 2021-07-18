@@ -41,8 +41,8 @@ public:
 private:
   std::string GenerateRandomString(const int length = 10) {
     std::string alphanum = "0123456789"
-                            "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                            "abcdefghijklmnopqrstuvwxyz";
+                           "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                           "abcdefghijklmnopqrstuvwxyz";
     std::string random_string = "";
     for (size_t i = 0; i < length; i++) {
       random_string += alphanum.at(std::rand() % alphanum.length());
