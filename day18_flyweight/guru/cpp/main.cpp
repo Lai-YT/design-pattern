@@ -19,9 +19,11 @@ void AddCarToPoliceDatabase(FlyweightFactory& ff, const std::string& plates,
 // The client code usually creates a bunch of pre-populated flyweights in the
 // initialization stage of the application.
 int main(int argc, char const *argv[]) {
-  FlyweightFactory factory({{"Chevrolet", "Camaro2018", "pink"},
-                            {"Mercedes Benz", "C300", "black"}, {"Mercedes Benz", "C500", "red"},
-                            {"BMW", "M5", "red"}, {"BMW", "X6", "white"}});
+  FlyweightFactory factory({
+    {"Chevrolet", "Camaro2018", "pink"},
+    {"Mercedes Benz", "C300", "black"}, {"Mercedes Benz", "C500", "red"},
+    {"BMW", "M5", "red"}, {"BMW", "X6", "white"}
+  });
   factory.ListFlyweights();
   std::cout << '\n';
 
@@ -29,6 +31,7 @@ int main(int argc, char const *argv[]) {
   std::cout << '\n';
   AddCarToPoliceDatabase(factory, "CL234IR", "James Doe", "BMW", "X1", "red");
   std::cout << '\n';
+  
   factory.ListFlyweights();
   // FlyweightFactory: I have 5 flyweights.
   // BMW_M5_red
