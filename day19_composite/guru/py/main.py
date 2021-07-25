@@ -47,3 +47,11 @@ if __name__ == '__main__':
 
     print('Client: I don\'t need to check the components classes even when managing the tree.')
     client_code_2(tree, simple)
+    # Client: I've got a simple component.
+    # Result: Leaf.
+    #
+    # Client: Now I've got a composite tree.
+    # Result: Branch(Branch(Leaf+Leaf)+Branch(Leaf)).
+    #
+    # Client: I don't need to check the components classes even when managing the tree.
+    # Result: Branch(Branch(Leaf+Leaf)+Branch(Leaf)+Leaf).
