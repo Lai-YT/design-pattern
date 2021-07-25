@@ -1,19 +1,12 @@
 from typing import List
 
-from memento import Memento
 from originator import Originator
 
 
 class Caretaker:
-    """
-    The Caretaker doesn't depend on the Concrete Memento class. Therefore, it
-    doesn't have access to the originator's state, stored inside the memento. It
-    works with all mementos via the base Memento interface.
-    """
-
     def __init__(self, originator: Originator) -> None:
-        self._mementos: List[Memento] = []
         self._originator = originator
+        self._mementos: List[Originator.Memento] = []
 
     def backup(self) -> None:
         print('Caretaker: Saving Originator\'s state...')
@@ -22,12 +15,13 @@ class Caretaker:
     def undo(self) -> None:
         if not self._mementos:
             return
-            
-        memento: Memento = self._mementos.pop()
+
+        memento: Originator.Memento = self._mementos.pop()
         print(f'Caretaker: Restoring state to {memento.name}.')
         try:
             self._originator.restore(memento)
-        except Exception:
+        except Exception as e:
+            print(e)
             self.undo()
 
     def show_history(self) -> None:
