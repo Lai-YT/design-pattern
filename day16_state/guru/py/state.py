@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from overrides import overrides
 
-import context
+import context as c
 
 
 class State(ABC):
@@ -14,11 +14,11 @@ class State(ABC):
     """
 
     @property
-    def context(self) -> context.Context:
+    def context(self) -> c.Context:
         return self._context
 
     @context.setter
-    def context(self, context: context.Context) -> None:
+    def context(self, context: c.Context) -> None:
         self._context = context
 
     @abstractmethod

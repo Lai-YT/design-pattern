@@ -1,5 +1,5 @@
 import state
-# To avoid circular import problem, cant use from state import State.
+# To avoid circular import problem, can't use from state import State.
 
 class Context:
     """
