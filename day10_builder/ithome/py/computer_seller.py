@@ -1,6 +1,6 @@
-from computer_builder import *
+from computer_builder import ComputerBuilder
 from computer_part import *
-from computer import *
+from computer import Computer
 
 
 class ComputerSeller:

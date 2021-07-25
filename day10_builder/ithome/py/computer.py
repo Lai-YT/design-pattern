@@ -2,12 +2,6 @@ from computer_part import *
 
 
 class Computer:
-    def __init__(self) -> None:
-        self._processor: Processor = None
-        self._memory: Memory = None
-        self._graphics: Graphics = None
-        self._storage: Storage = None
-
     def set_processor(self, processor: Processor) -> None:
         print('Setting processor...')
         self._processor = processor

@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from overrides import overrides
 
 from computer_part import *
-from computer import *
+from computer import Computer
 
 
 class ComputerBuilder:
