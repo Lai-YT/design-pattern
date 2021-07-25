@@ -36,25 +36,26 @@ if __name__ == '__main__':
     #
     # Caretaker: Saving Originator's state...
     # Originator: I'm doing something important.
-    # Originator: And my state has changed to kZfMRHroLcgdniFWNDSeBlshIOJQGj.
+    # Originator: And my state has changed to jATOZhDpbzVnMEefGiLFBqIorkatPs.
     #
     # Caretaker: Saving Originator's state...
     # Originator: I'm doing something important.
-    # Originator: And my state has changed to jfnyrhPwTdYJZOtVmuicIGBxFUbWpv.
+    #
+    # Originator: And my state has changed to ROoDbqYLulnBhztaEwjUKmfiPXIdey.
     #
     # Caretaker: Saving Originator's state...
     # Originator: I'm doing something important.
-    # Originator: And my state has changed to ZORwcyvSXpYAsWQgdHeIhtmqokDBxV.
+    # Originator: And my state has changed to cLmONjAMdkJYpbKBwWlGHoFQUIqCai.
     #
     # Caretaker: Here's the list of mementos.
-    # 2021-07-17 23:31:14 / (Super-dup...)
-    # 2021-07-17 23:31:14 / (kZfMRHroL...)
-    # 2021-07-17 23:31:14 / (jfnyrhPwT...)
+    # 2021-07-25 12:34:23 / (Super-dup...)
+    # 2021-07-25 12:34:23 / (jATOZhDpb...)
+    # 2021-07-25 12:34:23 / (ROoDbqYLu...)
     #
     # Client: Now, let's rollback!
-    # Caretaker: Restoring state to 2021-07-17 23:31:14 / (jfnyrhPwT...).
-    # Originator: My state has changed to None.
+    # Caretaker: Restoring state to 2021-07-25 12:34:23 / (ROoDbqYLu...).
+    # Originator: My state has changed to ROoDbqYLulnBhztaEwjUKmfiPXIdey.
     #
     # Client: Once more!
-    # Caretaker: Restoring state to 2021-07-17 23:31:14 / (kZfMRHroL...).
-    # Originator: My state has changed to None.
+    # Caretaker: Restoring state to 2021-07-25 12:34:23 / (jATOZhDpb...).
+    # Originator: My state has changed to jATOZhDpbzVnMEefGiLFBqIorkatPs.

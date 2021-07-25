@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
+from overrides import overrides
 
 
 class Memento(ABC):
@@ -8,6 +9,11 @@ class Memento(ABC):
     such as creation date or name. However, it doesn't expose the Originator's
     state.
     """
+
+    # Since this is a public method, state risks the exposure.
+    @abstractmethod
+    def get_state(self) -> str:
+        pass
 
     @property
     @abstractmethod
@@ -25,11 +31,13 @@ class ConcreteMemento(Memento):
         self._state = state
         self._date = str(datetime.now())[:19]
 
-    # Since this is a public method, state risks the exposure.
+    @overrides
     def get_state(self) -> str:
         """
         The Originator uses this method when restoring its state.
         """
+
+        return self._state
 
     """
     The rest of the methods are used by the Caretaker to display metadata.
