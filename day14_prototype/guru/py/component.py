@@ -1,18 +1,15 @@
 from __future__ import annotations
 import copy
-from typing import Dict, List
+from typing import Any, Dict, List, Optional
 
 
 class SelfReferencingEntity:
-    def __init__(self) -> None:
-        self.parent: object = None
-
     @property
-    def parent(self) -> object:
+    def parent(self) -> SomeComponent:
         return self._parent
 
     @parent.setter
-    def parent(self, parent: object) -> None:
+    def parent(self, parent: SomeComponent) -> None:
         self._parent = parent
 
 
@@ -26,8 +23,8 @@ class SomeComponent:
 
     def __init__(self,
                  some_int: int,
-                 some_list_of_objects: List[object],
-                 some_circular_ref: object) -> None:
+                 some_list_of_objects: List[Any],
+                 some_circular_ref: SelfReferencingEntity) -> None:
         self.some_int = some_int
         self.some_list_of_objects = some_list_of_objects
         self.some_circular_ref = some_circular_ref
@@ -40,8 +37,8 @@ class SomeComponent:
         """
 
         # First, let's create copies of the nested objectes.
-        some_list_of_objects: List[object] = copy.copy(self.some_list_of_objects)
-        some_circular_ref: object = copy.copy(self.some_circular_ref)
+        some_list_of_objects: List[Any] = copy.copy(self.some_list_of_objects)
+        some_circular_ref: SelfReferencingEntity = copy.copy(self.some_circular_ref)
 
         # Then, let's clone the object itself, using the prepared clones of the
         # nessted objects.
@@ -52,7 +49,7 @@ class SomeComponent:
 
         return new_component
 
-    def __deepcopy__(self, memo: Dict[int, object] = None) -> SomeComponent:
+    def __deepcopy__(self, memo: Optional[Dict[int, Any]] = None) -> SomeComponent:
         """
         Create a deep copy. This method will be called whenever someone calls
         `copy.deepcopy` with this object and the returned value is returned as
@@ -69,8 +66,8 @@ class SomeComponent:
             memo = dict()
 
         # First, let's create copies of the nested objects.
-        some_list_of_objects: List[object] = copy.deepcopy(self.some_list_of_objects, memo)
-        some_circular_ref: object = copy.deepcopy(self.some_circular_ref, memo)
+        some_list_of_objects: List[Any] = copy.deepcopy(self.some_list_of_objects, memo)
+        some_circular_ref: SelfReferencingEntity = copy.deepcopy(self.some_circular_ref, memo)
 
         # Then, let's clone the object itself, using the prepared clones of the
         # nested objects.

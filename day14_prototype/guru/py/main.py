@@ -1,5 +1,5 @@
 import copy
-from typing import List
+from typing import Any, List
 
 from component import *
 
@@ -63,7 +63,7 @@ def deep_copy_test(component: SomeComponent) -> None:
 
 
 if __name__ =='__main__':
-    list_of_objects: List[object] = [1, {1, 2, 3}, [1, 2, 3]]
+    list_of_objects: List[Any] = [1, {1, 2, 3}, [1, 2, 3]]
     circular_ref = SelfReferencingEntity()
     component = SomeComponent(23, list_of_objects, circular_ref)
     circular_ref.parent = component
