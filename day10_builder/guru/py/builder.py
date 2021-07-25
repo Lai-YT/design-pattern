@@ -1,6 +1,5 @@
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 from overrides import overrides
-
 
 from product import *
 
@@ -11,8 +10,9 @@ class Builder(ABC):
     the Product objects.
     """
 
-    @abstractproperty
-    def product(self) -> None:
+    @property
+    @abstractmethod
+    def product(self) -> Product1:
         pass
 
     @abstractmethod
@@ -48,7 +48,6 @@ class ConcreteBuilder1(Builder):
         print('ConcreteBuilder1: Ready for a new build.')
 
     @property
-    @overrides
     def product(self) -> Product1:
         """
         Concrete Builders are supposed to provide their own methods for

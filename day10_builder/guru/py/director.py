@@ -1,3 +1,5 @@
+from typing import Optional
+
 from builder import *
 
 
@@ -8,9 +10,6 @@ class Director:
     specific order or configuration. Strictly speaking, the Director class is
     optional, since the client can control builders directly.
     """
-
-    def __init__(self) -> None:
-        self._builder: Builder = None
 
     @property
     def builder(self) -> Builder:
