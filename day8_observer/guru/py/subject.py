@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from overrides import overrides
 from random import randrange
-from typing import List
+from typing import List, Optional
 
 from observer import *
 
@@ -33,6 +33,11 @@ class Subject(ABC):
         """
         pass
 
+    @property
+    @abstractmethod
+    def state(self) -> Optional[int]:
+        pass
+
 
 class ConcreteSubject(Subject):
     """
@@ -41,7 +46,7 @@ class ConcreteSubject(Subject):
     """
 
     def __init__(self) -> None:
-        self._state: int = None
+        self._state: Optional[int] = None
         """
         For the sake of simplicity, the Subject's state, essential to all
         subscribers, is stored in this variable.
@@ -76,7 +81,7 @@ class ConcreteSubject(Subject):
             observer.update(self)
 
     @property
-    def state(self) -> int:
+    def state(self) -> Optional[int]:
         return self._state
 
     def some_business_logic(self) -> None:

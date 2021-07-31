@@ -2,7 +2,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from overrides import overrides
 
-from subject import *
+from subject import Subject
 
 
 class Observer(ABC):
@@ -25,12 +25,12 @@ attached to.
 class ConcreteObserverA(Observer):
     @overrides
     def update(self, subject: Subject) -> None:
-        if subject.state < 3:
+        if subject.state is not None and subject.state < 3:
             print('ConcreteObserverA: Reacted to the event.')
 
 
 class ConcreteObserverB(Observer):
     @overrides
     def update(self, subject: Subject) -> None:
-        if subject.state == 0 or subject.state >= 2:
+        if subject.state is not None and (subject.state == 0 or subject.state >= 2):
             print('ConcreteObserverB: Reacted to the event.')
