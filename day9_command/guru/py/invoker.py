@@ -1,3 +1,5 @@
+from typing import Optional
+
 from command import *
 
 
@@ -12,8 +14,8 @@ class Invoker:
         Initialize commands.
         """
 
-        self._on_start: Command = None
-        self._on_finish: Command = None
+        self._on_start: Optional[Command] = None
+        self._on_finish: Optional[Command] = None
 
     def set_on_start(self, command: Command) -> None:
         self._on_start = command
