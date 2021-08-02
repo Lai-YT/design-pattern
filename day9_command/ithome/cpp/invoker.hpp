@@ -3,6 +3,7 @@
 
 #include <forward_list>
 #include <iostream>
+#include <memory>
 
 #include "command.hpp"
 
@@ -10,16 +11,8 @@
 // stores the commands
 class Invoker {
 public:
-
-  ~Invoker() {
-    while (!command_list_.empty()) {
-      delete command_list_.front();
-      command_list_.pop_front();
-    }
-  }
-
-  void SetCommand(Command* command) {
-    command_list_.push_front(command);
+  void SetCommand(const Command& command) {
+    command_list_.push_front(std::unique_ptr<Command>(command.Clone()));
     std::cout << "Waiting for execution..." << '\n';
   }
 
@@ -32,7 +25,6 @@ public:
 
   void Undo() {
     if (!command_list_.empty()) {
-      delete command_list_.front();
       command_list_.pop_front();
     }
     std::cout << "Execute the previous command... " << "\n";
@@ -40,7 +32,8 @@ public:
   }
 
 private:
-  std::forward_list<Command*> command_list_;
+  std::forward_list<std::unique_ptr<Command>> command_list_;
 };
+
 
 #endif /* end of include guard: INVOKER_HPP_ */
