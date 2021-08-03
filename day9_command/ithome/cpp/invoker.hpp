@@ -27,7 +27,7 @@ public:
     if (!command_list_.empty()) {
       command_list_.pop_front();
     }
-    std::cout << "Execute the previous command... " << "\n";
+    std::cout << "Execute the previous command..." << "\n";
     Execute();
   }
 
