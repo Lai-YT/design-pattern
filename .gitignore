@@ -7,3 +7,5 @@ makefile
 
 __pycache__/
 .mypy_cache/
+
+*.class
