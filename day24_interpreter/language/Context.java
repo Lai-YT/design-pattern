@@ -1,12 +1,14 @@
 package language;
 
 import java.util.StringTokenizer;
+import language.ExecutorFactory;
 import language.ParseException;
 
 
-public class Context {
+public class Context implements ExecutorFactory {
     private StringTokenizer tokenizer;
     private String currentToken;
+    private ExecutorFactory factory;
 
     public Context(final String text) {
         this.tokenizer = new StringTokenizer(text);
@@ -38,5 +40,14 @@ public class Context {
         } catch (final NumberFormatException e) {
             throw new ParseException("Warning: " + e);
         }
+    }
+
+    public void setExecutorFactory(final ExecutorFactory factory) {
+        this.factory = factory;
+    }
+
+    @Override
+    public Executor createExecutor(final String command) {
+        return this.factory.createExecutor(command);
     }
 }

@@ -2,12 +2,13 @@ package language;
 
 import language.CommandListNode;
 import language.Context;
+import language.ExecuteException;
 import language.Node;
 import language.ParseException;
 
 
 /*
- * <repeat command> ::= repeat <number> <command list> end
+ * <repeat command> ::= repeat <number> <command list>
  */
 public class RepeatCommandNode extends Node {
     private int number;
@@ -20,6 +21,13 @@ public class RepeatCommandNode extends Node {
         context.nextToken();
         this.commandListNode = new CommandListNode();
         this.commandListNode.parse(context);
+    }
+
+    @Override
+    public void execute() throws ExecuteException {
+        for (int i = 0; i < number; ++i) {
+            commandListNode.execute();
+        }
     }
 
     @Override

@@ -3,12 +3,13 @@ package language;
 import java.util.ArrayList;
 import language.CommandNode;
 import language.Context;
+import language.ExecuteException;
 import language.ParseException;
 import language.Node;
 
 
 /*
- * <command list> ::= <command>*
+ * <command list> ::= <command>* end
  */
 public class CommandListNode extends Node {
     private ArrayList<CommandNode> list = new ArrayList<>();
@@ -26,6 +27,13 @@ public class CommandListNode extends Node {
                 commandNode.parse(context);
                 this.list.add(commandNode);
             }
+        }
+    }
+
+    @Override
+    public void execute() throws ExecuteException {
+        for (final CommandNode command : this.list) {
+            command.execute();
         }
     }
 

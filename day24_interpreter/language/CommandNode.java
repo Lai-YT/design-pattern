@@ -1,6 +1,7 @@
 package language;
 
 import language.Context;
+import language.ExecuteException;
 import language.Node;
 import language.ParseException;
 import language.PrimitiveCommandNode;
@@ -21,6 +22,12 @@ public class CommandNode extends Node {
         this.node.parse(context);
     }
 
+    @Override
+    public void execute() throws ExecuteException {
+        this.node.execute();
+    }
+
+    @Override
     public String toString() {
         return this.node.toString();
     }

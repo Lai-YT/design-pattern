@@ -22,10 +22,10 @@ Other syntaxes are
 ### BNF (Backus Normal Form)
 
 ```
-<program> ::= program <command list> end
-<command list> ::= <command>*
+<program> ::= program <command list>
+<command list> ::= <command>* end
 <command> ::= <repeat command> | <primitive command>
-<repeat command> ::= repeat <number> <command list> end
+<repeat command> ::= repeat <number> <command list>
 <primitive command> ::= go | right | left
 ```
 
@@ -33,3 +33,7 @@ Other syntaxes are
 
 - program go right right go end
 - program repeat 4 go right end end
+
+## Run
+
+Run `Main.java` to try this mini language!
