@@ -1,8 +1,10 @@
 from __future__ import annotations
 from abc import ABC, abstractmethod
 from overrides import overrides
+from typing import TYPE_CHECKING
 
-from component import *
+if TYPE_CHECKING:
+    from component import BaseComponent, Component1, Component2
 
 
 class Mediator(ABC):
