@@ -3,7 +3,6 @@
 
 #include <string>
 
-#include "component.hpp"
 
 class BaseComponent;
 class Component1;
@@ -15,7 +14,9 @@ class Component2;
 // pass the execution to other components.
 class Mediator {
 public:
-  virtual void Notify(const BaseComponent* const sender, const std::string& event) const = 0;
+  virtual void Notify(const BaseComponent& sender, const std::string& event) const = 0;
+
+  virtual ~Mediator() = default;
 };
 
 
@@ -23,13 +24,13 @@ public:
 // components.
 class ConcreteMediator : public Mediator {
 public:
-  void Notify(const BaseComponent* const sender, const std::string& event) const override;
+  void Notify(const BaseComponent& sender, const std::string& event) const override;
 
-  ConcreteMediator(Component1* const component_1, Component2* const component_2);
+  ConcreteMediator(Component1& component_1, Component2& component_2);
 
 private:
-  Component1* component_1_;
-  Component2* component_2_;
+  Component1& component_1_;
+  Component2& component_2_;
 };
 
 

@@ -1,7 +1,6 @@
 #ifndef COMPONENT_HPP_
 #define COMPONENT_HPP_
 
-#include "mediator.hpp"
 
 class Mediator;
 
@@ -13,6 +12,7 @@ public:
   void SetMediator(Mediator* const mediator);
 
   BaseComponent(Mediator* const mediator = nullptr);
+  virtual ~BaseComponent() = default;
 
 protected:
   Mediator* mediator_;

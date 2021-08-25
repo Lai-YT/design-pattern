@@ -7,7 +7,7 @@
 void ClientCode() {
   Component1 c1;
   Component2 c2;
-  ConcreteMediator mediator(&c1, &c2);
+  ConcreteMediator mediator(c1, c2);
 
   std::cout << "Client triggers operation A." << '\n';
   c1.DoA();
