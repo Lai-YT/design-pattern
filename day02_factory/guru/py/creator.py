@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from overrides import overrides
 
-from product import *
+from product import ConcreteProduct1, ConcreteProduct2, Product
 
 
 class Creator(ABC):
@@ -12,7 +12,7 @@ class Creator(ABC):
     """
 
     @abstractmethod
-    def factory_method(self):
+    def factory_method(self) -> Product:
         """
         Note that the Creator may also provide some default implementation of
         the factory method.
@@ -49,11 +49,11 @@ class ConcreteCreator1(Creator):
     """
 
     @overrides
-    def factory_method(self) -> Product:
+    def factory_method(self) -> ConcreteProduct1:
         return ConcreteProduct1()
 
 
 class ConcreteCreator2(Creator):
     @overrides
-    def factory_method(self) -> Product:
-        return ConcreteProduct1()
+    def factory_method(self) -> ConcreteProduct2:
+        return ConcreteProduct2()
