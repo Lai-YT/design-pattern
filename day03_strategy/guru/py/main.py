@@ -1,5 +1,5 @@
-from context import *
-from strategy import *
+from context import Context
+from strategy import ConcreteStrategyA, ConcreteStrategyB
 
 
 # The client code picks a concrete strategy and passes it to the context.
@@ -7,16 +7,16 @@ from strategy import *
 # to make the right choice.
 def client_code() -> None:
     context = Context(ConcreteStrategyA())
-    print("Client: Strategy is set to normal sorting.")
+    print('Client: Strategy is set to normal sorting.')
     context.do_some_business_logic()
     print()
 
     context.strategy = ConcreteStrategyB()
-    print("Client: Strategy is set to reverse sorting.")
+    print('Client: Strategy is set to reverse sorting.')
     context.do_some_business_logic()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     client_code()
     # Client: Strategy is set to normal sorting.
     # Context: Sorting data using the strategy... (not sure how it'll do it)

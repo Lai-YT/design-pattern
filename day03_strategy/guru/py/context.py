@@ -1,4 +1,3 @@
-from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import List
 
@@ -42,6 +41,6 @@ class Context():
         implementing multiple versions of the algorithm on its own.
         """
 
-        print("Context: Sorting data using the strategy... (not sure how it'll do it)")
-        result: List[str] = self._strategy.do_algorithm(["b", "c", "a", "d", "e"])
-        print("Result:", ",".join(result))
+        print('Context: Sorting data using the strategy... (not sure how it\'ll do it)')
+        result: List[str] = self._strategy.do_algorithm(['b', 'c', 'a', 'd', 'e'])
+        print('Result:', ','.join(result))
