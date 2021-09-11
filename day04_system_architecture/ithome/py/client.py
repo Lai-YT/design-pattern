@@ -1,6 +1,6 @@
 from typing import Union
 
-from drink import *
+from drink import CoffeeType, Coffee, Drink, IceType, SugarType, TeaType, Tea
 
 
 class Client:

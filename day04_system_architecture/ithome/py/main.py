@@ -1,15 +1,15 @@
-from client import *
-from drink import *
+from client import Client
+from drink import CoffeeType, Drink, IceType, SugarType, TeaType
 
 
 if __name__ == '__main__':
     client = Client()
 
-    tea: Tea = client.order(TeaType.OOLONG, SugarType.QUARTER, IceType.EASY)
+    tea: Drink = client.order(TeaType.OOLONG, SugarType.QUARTER, IceType.EASY)
     tea.describe()
     print()
 
-    coffee: Coffee = client.order(CoffeeType.AMERICANO, SugarType.FREE, IceType.HOT)
+    coffee: Drink = client.order(CoffeeType.AMERICANO, SugarType.FREE, IceType.HOT)
     coffee.describe()
     # It's a cup of oolong tea.
     # Sweetness level: quarter
