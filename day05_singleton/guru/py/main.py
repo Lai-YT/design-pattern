@@ -1,6 +1,6 @@
 from threading import Thread
 
-from singleton import *
+from singleton import Singleton
 
 
 def test_singleton(value: str) -> None:

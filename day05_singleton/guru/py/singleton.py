@@ -1,5 +1,6 @@
 from __future__ import annotations
 from threading import Lock
+from typing import Dict
 
 
 # This is a thread-safe implementation of Singleton.
@@ -9,8 +10,8 @@ from threading import Lock
 # metaclass because it is best suited for this purpose.
 class SingletonMeta(type):
 
-    _instances = {}
-    
+    _instances: Dict[SingletonMeta, Singleton] = {}
+
     _lock: Lock = Lock()
     # We now have a lock object that will be used to synchronize threads during
     # first access to the Singleton.
