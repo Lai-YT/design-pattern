@@ -1,0 +1,10 @@
+- Input -----
+Name, Salary
+John Smith, 100000
+Steven Jobs, 912000
+- Encoded ---
+ZUp6elM4eE4xVkVJVHN4SkxLcms4c3JQeUZNSXpzMHN5ZEJSTURRQUFhN2drdFN5MUR3RnIveWtZaDBGUzBNam9CZ0FuOEVQQ2c9PQ==
+- Decoded ---
+Name, Salary
+John Smith, 100000
+Steven Jobs, 912000
