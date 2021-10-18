@@ -24,13 +24,13 @@ public:
 
 class ConcreteVisitor1 : public Visitor {
 public:
-  virtual void VisitConcreteComponentA(const ConcreteComponentA& element) const override;
-  virtual void VisitConcreteComponentB(const ConcreteComponentB& element) const override;
+  void VisitConcreteComponentA(const ConcreteComponentA& element) const override;
+  void VisitConcreteComponentB(const ConcreteComponentB& element) const override;
 };
 
 
 class ConcreteVisitor2 : public Visitor {
 public:
-  virtual void VisitConcreteComponentA(const ConcreteComponentA& element) const override;
-  virtual void VisitConcreteComponentB(const ConcreteComponentB& element) const override;
+  void VisitConcreteComponentA(const ConcreteComponentA& element) const override;
+  void VisitConcreteComponentB(const ConcreteComponentB& element) const override;
 };
