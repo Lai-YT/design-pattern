@@ -8,6 +8,9 @@ import java.awt.Point;
 import language.ExecuteException;
 import language.Executor;
 import language.ExecutorFactory;
+import turtle.DirectionExecutor;
+import turtle.GoExecutor;
+import turtle.TurtleExecutor;
 
 
 public class TurtleCanvas extends Canvas implements ExecutorFactory {
@@ -106,44 +109,5 @@ public class TurtleCanvas extends Canvas implements ExecutorFactory {
 
         this.position.x = newX;
         this.position.y = newY;
-    }
-}
-
-
-abstract class TurtleExecutor implements Executor {
-    protected TurtleCanvas canvas;
-
-    public TurtleExecutor(final TurtleCanvas canvas) {
-        this.canvas = canvas;
-    }
-
-    @Override
-    public abstract void execute();
-}
-
-
-class GoExecutor extends TurtleExecutor {
-    public GoExecutor(final TurtleCanvas canvas) {
-        super(canvas);
-    }
-
-    @Override
-    public void execute() {
-        this.canvas.go(TurtleCanvas.UNIT_LENGTH);
-    }
-}
-
-
-class DirectionExecutor extends TurtleExecutor {
-    private int relativeDirection;
-
-    public DirectionExecutor(final TurtleCanvas canvas, final int relativeDirection) {
-        super(canvas);
-        this.relativeDirection = relativeDirection;
-    }
-
-    @Override
-    public void execute() {
-        this.canvas.setRelativeDirection(this.relativeDirection);
     }
 }
