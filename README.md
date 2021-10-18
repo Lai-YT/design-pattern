@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/lai-yt/design-pattern/badge/master)](https://www.codefactor.io/repository/github/lai-yt/design-pattern/overview/master)
+
 # Design Pattern
 
 Learning from [_refactoring.guru_](https://refactoring.guru/design-patterns) and [_ithelp.ithome.com.tw_](https://ithelp.ithome.com.tw/users/20112528/ironman/2113)
