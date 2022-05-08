@@ -1,0 +1,23 @@
+Car built:
+Type of car: SPORTS_CAR
+Count of seats: 2
+Engine: volume - 3.0; mileage - 0.0
+Transmission: SEMI_AUTOMATIC
+Trip Computer: Functional
+GPS Navigator: Functional
+
+Car manual built:
+Type of car: SPORTS_CAR
+Count of seats: 2
+Engine: volume - 3.0; mileage - 0.0
+Transmission: SEMI_AUTOMATIC
+Trip Computer: Functional
+GPS Navigator: Functional
+
+Car manual built without director:
+Type of car: CITY_CAR
+Count of seats: 1
+Engine: volume - 2.0; mileage - 1000.0
+Transmission: MANUAL
+Trip Computer: N/A
+GPS Navigator: N/A
