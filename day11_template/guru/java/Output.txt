@@ -1,0 +1,17 @@
+Input user name: Lai-YT
+Input password: 123456
+Input message: hello world
+
+Choose social network for posting message.
+1 - Facebook
+2 - Twitter
+1
+
+Checking user's parameters
+Name: Lai-YT
+Password: ******
+..........
+
+Log in success on Facebook
+Message 'hello world' was posted on Facebook
+User 'Lai-YT' was logged out from Facebook
