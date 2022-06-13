@@ -45,6 +45,7 @@ public class Facebook extends Network {
                 System.out.print(".");
                 Thread.sleep(500);
             }
+            System.out.println();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
