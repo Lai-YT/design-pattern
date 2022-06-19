@@ -1,0 +1,3 @@
+Round reg with radius 5 fits round hole with width 5.
+Square peg with width 2 fits round hole with radius 5.
+Square peg with width 20 does not fit into round hole with radius 5.
