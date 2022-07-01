@@ -5,17 +5,17 @@ from overrides import overrides
 
 class SugarType(Enum):
     REGULAR = 'regular'
-    LESS    = 'less'
-    HALF    = 'half'
+    LESS = 'less'
+    HALF = 'half'
     QUARTER = 'quarter'
-    FREE    = 'free'
+    FREE = 'free'
 
 
 class IceType(Enum):
     REGULAR = 'regular'
-    EASY    = 'easy'
-    FREE    = 'free'
-    HOT     = 'hot'
+    EASY = 'easy'
+    FREE = 'free'
+    HOT = 'hot'
 
 
 class Drink(ABC):
@@ -38,8 +38,8 @@ class Drink(ABC):
 
 
 class TeaType(Enum):
-    BLACK  = 'black'
-    GREEN  = 'green'
+    BLACK = 'black'
+    GREEN = 'green'
     OOLONG = 'oolong'
 
 
@@ -59,9 +59,9 @@ class Tea(Drink):
 
 
 class CoffeeType(Enum):
-    LATTE     = 'latte'
+    LATTE = 'latte'
     AMERICANO = 'Americano'
-    ESPRESSO  = 'espresso'
+    ESPRESSO = 'espresso'
 
 
 class Coffee(Drink):
