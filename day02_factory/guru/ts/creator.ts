@@ -1,4 +1,4 @@
-import * as pdt from "./product"
+import { Product, ConcreteProduct1, ConcreteProduct2 } from "./product"
 
 // The Creator class declares the factory method that is supposed to return an
 // object of a Product class. The Creator's subclasses usually provide the
@@ -7,7 +7,7 @@ import * as pdt from "./product"
 export abstract class Creator {
   // Note that the Creator may also provide some default implementation of the
   // factory method.
-  public abstract factoryMethod(): pdt.Product;
+  public abstract factoryMethod(): Product;
 
   // Also note that, despite its name, the Creator's primary responsibility is
   // not creating products. Usually, it contains some core business logic that
@@ -30,14 +30,14 @@ export class ConcreteCreator1 extends Creator {
   // type, even though the concrete product is actually returned from the
   // method. This way the Creator can stay independent of concrete product
   // classes.
-  public factoryMethod(): pdt.Product {
-    return new pdt.ConcreteProduct1();
+  public factoryMethod(): Product {
+    return new ConcreteProduct1();
   }
 }
 
 
 export class ConcreteCreator2 extends Creator {
-  public factoryMethod(): pdt.Product {
-    return new pdt.ConcreteProduct2();
+  public factoryMethod(): Product {
+    return new ConcreteProduct2();
   }
 }
