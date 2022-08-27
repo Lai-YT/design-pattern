@@ -27,7 +27,7 @@ public:
   }
 
   std::string date() const override {
-    return state_;
+    return date_;
   }
 
   ConcreteMemento(const std::string& state) {
