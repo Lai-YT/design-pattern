@@ -2,9 +2,6 @@ import java.awt.Color;
 import java.awt.Point;
 
 import forest.Forest;
-import trees.Tree;
-import trees.TreeFactory;
-import trees.TreeType;
 
 public class Main {
     private static final int CANVAS_SIZE = 600;
@@ -15,11 +12,11 @@ public class Main {
         final Forest forest = new Forest();
         for (int i = 0; i < TREES_TO_DRAW / TREE_TYPES; ++i) {
             forest.plantTree(new Point(random(CANVAS_SIZE), random(CANVAS_SIZE)),
-                "Summer Oak", Color.GREEN, "Oak texture stub");
+                    "Summer Oak", Color.GREEN, "Oak texture stub");
             forest.plantTree(new Point(random(CANVAS_SIZE), random(CANVAS_SIZE)),
-                "Autumn Oak", Color.ORANGE, "Autumn oak texture stub");
+                    "Autumn Oak", Color.ORANGE, "Autumn oak texture stub");
             forest.plantTree(new Point(random(CANVAS_SIZE), random(CANVAS_SIZE)),
-                "Cherry tree", Color.PINK, "Cherry tree texture stub");
+                    "Cherry tree", Color.PINK, "Cherry tree texture stub");
         }
         forest.setSize(CANVAS_SIZE, CANVAS_SIZE);
         forest.setVisible(true);

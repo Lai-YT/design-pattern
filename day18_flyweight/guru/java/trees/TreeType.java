@@ -6,8 +6,10 @@ import java.awt.Point;
 
 /// Contains state shared by serveral trees.
 public class TreeType {
-    private final String name;
     private final Color color;
+    @SuppressWarnings("unused")
+    private final String name;
+    @SuppressWarnings("unused")
     private final String otherTreeData;
 
     public TreeType(final String name, final Color color, final String otherTreeData) {
