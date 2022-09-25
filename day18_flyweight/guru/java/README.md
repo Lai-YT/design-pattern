@@ -1,6 +1,6 @@
 # Rendering a forest
 
-In this example, we're going to render a forest (1,000,000 trees)! \
+In this example, we're going to render a forest (3,000 trees)! \
 Each tree will be represented by its own object that has some state (coordinates, texture and so on). \
 Although the program does its primary job, naturally, it consumes a lot of RAM.
 
