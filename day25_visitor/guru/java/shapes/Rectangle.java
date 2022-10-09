@@ -1,5 +1,7 @@
 package shapes;
 
+import visitor.Visitor;
+
 public class Rectangle implements Shape {
     private final int id;
     private final int x;
@@ -13,6 +15,11 @@ public class Rectangle implements Shape {
         this.y = y;
         this.width = width;
         this.height = height;
+    }
+
+    @Override
+    public String accept(final Visitor visitor) {
+        return visitor.visit(this);
     }
 
     @Override

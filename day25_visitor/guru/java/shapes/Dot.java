@@ -1,13 +1,21 @@
 package shapes;
 
+import visitor.Visitor;
+
 public class Dot implements Shape {
-    private int id;
+    private final int id;
     private final int x;
     private final int y;
 
     public Dot(final int id, final int x, final int y) {
+        this.id = id;
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public String accept(final Visitor visitor) {
+        return visitor.visit(this);
     }
 
     @Override

@@ -3,12 +3,19 @@ package shapes;
 import java.util.ArrayList;
 import java.util.List;
 
+import visitor.Visitor;
+
 public class CompoundShape implements Shape {
+    public final List<Shape> children = new ArrayList<>();
     private final int id;
-    private final List<Shape> children = new ArrayList<>();
 
     public CompoundShape(final int id) {
         this.id = id;
+    }
+
+    @Override
+    public String accept(final Visitor visitor) {
+        return visitor.visit(this);
     }
 
     @Override

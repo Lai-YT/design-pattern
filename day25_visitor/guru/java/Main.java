@@ -1,4 +1,5 @@
 import shapes.*;
+import visitor.XmlExportVisitor;
 
 public class Main {
     public static void main(final String[] args) {
@@ -20,6 +21,7 @@ public class Main {
     }
 
     private static void export(final Shape... shapes) {
-
+        XmlExportVisitor exportVisitor = new XmlExportVisitor();
+        System.out.println(exportVisitor.export(shapes));
     }
 }
