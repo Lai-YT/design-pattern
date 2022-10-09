@@ -2,13 +2,12 @@ package shapes;
 
 import visitor.Visitor;
 
-public class Dot implements Shape {
-    private final int id;
+public class Dot extends BaseShape {
     private final int x;
     private final int y;
 
     public Dot(final int id, final int x, final int y) {
-        this.id = id;
+        super(id);
         this.x = x;
         this.y = y;
     }
@@ -18,25 +17,11 @@ public class Dot implements Shape {
         return visitor.visit(this);
     }
 
-    @Override
-    public void move(final int x, final int y) {
-        /* move shape */
-    }
-
-    @Override
-    public void draw() {
-        /* draw shape */
-    }
-
     public int getX() {
         return x;
     }
 
     public int getY() {
         return y;
-    }
-
-    public int getId() {
-        return id;
     }
 }
