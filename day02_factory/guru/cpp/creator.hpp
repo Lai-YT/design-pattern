@@ -1,6 +1,7 @@
 #ifndef CREATOR_HPP_
 #define CREATOR_HPP_
 
+#include <memory>
 #include <string>
 
 #include "product.hpp"
@@ -11,17 +12,16 @@
 class Creator {
 public:
   virtual ~Creator() = default;
-  virtual Product* FactoryMethod() const = 0;
+  virtual std::unique_ptr<Product> FactoryMethod() const = 0;
 
   // Note that the Creator may also provide some default implementation of the
   // factory method.
   std::string SomeOperation() const {
     // Call the factory method to create a Product object.
-    Product* product = this->FactoryMethod();
+    std::unique_ptr<Product> product = this->FactoryMethod();
     // Now, use the product.
     std::string result = "Creator: The same creator's code has just worked with "
                          + product->Operation();
-    delete product;
     return result;
   }
 };
@@ -33,15 +33,15 @@ public:
   // Note that the signature of the method still uses the abstract product type,
   // even though the concrete product is actually returned from the method. This
   // way the Creator can stay independent of concrete product classes.
-  ConcreteProduct1* FactoryMethod() const override {
-    return new ConcreteProduct1();
+  std::unique_ptr<Product> FactoryMethod() const override {
+    return std::make_unique<ConcreteProduct1>();
   }
 };
 
 class ConcreteCreator2 : public Creator {
 public:
-  ConcreteProduct2* FactoryMethod() const override {
-    return new ConcreteProduct2();
+  std::unique_ptr<Product> FactoryMethod() const override {
+    return std::make_unique<ConcreteProduct2>();
   }
 };
 
