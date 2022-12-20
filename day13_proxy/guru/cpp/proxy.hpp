@@ -2,6 +2,7 @@
 #define PROXY_HPP_
 
 #include <iostream>
+#include <memory>
 
 #include "subject.hpp"
 
@@ -23,11 +24,7 @@ public:
   // The Proxy maintains a reference to an object of the RealSubject class.
   // It can be either lazy-loaded or passed to the Proxy by the client.
   Proxy(const RealSubject& real_subject)
-    :real_subject_(new RealSubject(real_subject)) {}
-
-  ~Proxy() {
-    delete real_subject_;
-  }
+    :real_subject_(std::make_unique<RealSubject>(real_subject)) {}
 
 private:
   bool CheckAccess_() const {
@@ -40,8 +37,7 @@ private:
     std::cout << "Proxy: Logging the time of request." << '\n';
   }
 
-  RealSubject* real_subject_;
-
+  std::unique_ptr<RealSubject> real_subject_;
 };
 
 
